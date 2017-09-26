@@ -1,0 +1,14 @@
+from flask import Flask, render_template
+
+my_app = Flask(__name__)
+
+@my_app.route('/occupations')
+
+def fileOpen(filename):
+    inStream = open(str(filename), "r")
+    Input = inStream.readlines()
+    inStream.close()
+    return Input
+
+fileInfo = fileOpen("occupations.csv")
+
