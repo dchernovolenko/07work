@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>occupations</title>
+    <style>
+      th{
+         text-align:left;
+      }
+      table,th,td {
+          border: 1px solid black;
+          border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Table of Job vs. Percentage</h1>
+    <table style = "border = 1">
+      <tr>
+	<th> Job Class </th>
+	<th> Percentage </th>
+      </tr>
+      {% for i in listkeys %}
+    <tr>
+      <td>
+	{{i}}
+      </td>
+      <td>
+	{{d[i]}}
+      </td>
+    </tr>
+    {% endfor %}
+    </table>
+    <p> <b>Randomly Selected Occupation:</b>
+      {{randomJob}}
+      </p>
+  </body>
+  
+</html>

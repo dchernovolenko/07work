@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>occupations</title>
+  </head>
+  <body>
+    <h1>Table of Job vs. Percentage</h1>
+    {% for i in listkeys %}
+    <tr>
+      <td>
+	{{i}}
+      </td>
+      <td>
+	{{d[i]}}
+      </td>
+    </tr>
+    {% endfor %}
+    
+  </body>
+  
+</html>

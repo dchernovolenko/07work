@@ -58,6 +58,20 @@ def weightedRandom(d):
             return string
 
 
+def ridHead(d):
+    newD = {}
+    for k in d.keys():
+        if k != "Job Class":
+            newD[k] = d[k]
+    return newD
+
+fileDictionary = ridHead(fileDictionary)
+randJob = weightedRandom(fileDictionary)
+
 @my_app.route('/occupations')
-    
-return render_template('occupations.html', k = fileDictionary.keys(), d = fileDictionary)
+def main():
+    return render_template('occupations.html', listkeys = fileDictionary.keys(), d = fileDictionary, randomJob = randJob)
+
+if __name__ == '__main__':
+    my_app.debug = True
+    my_app.run()
