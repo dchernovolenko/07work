@@ -1,7 +1,3 @@
-from flask import Flask, render_template
-
-my_app = Flask(__name__)
-
 
 def fileOpen(filename):
     inStream = open(str(filename), "r")
@@ -9,7 +5,7 @@ def fileOpen(filename):
     inStream.close()
     return Input
 
-fileInfo = fileOpen("occupations.csv")
+fileInfo = fileOpen("data/occupations.csv")
 
 import random
 
@@ -20,7 +16,7 @@ def tidify(jobsList):
         counter += 1
     return jobsList
 
-fileInfo = tidify(fileInfo)               
+fileInfo = tidify(fileInfo)
 
 def listify(jobsList):
     counter = 0
@@ -36,12 +32,20 @@ def listify(jobsList):
     return jobsList
 
 fileInfo =  listify(fileInfo)
-                
+
+def ridHead(d):
+    newD = {}
+    for k in d.keys():
+        if k != "Job Class":
+            newD[k] = d[k]
+    return newD
+
 def dictify(listOfList):
     d = {} #dictionary
     for l in listOfList:
         #print l[0]
         d[l[0]] = l[1]
+    d = ridHead(d)
     return d
 
 #print fileInfo
@@ -58,20 +62,8 @@ def weightedRandom(d):
             return string
 
 
-def ridHead(d):
-    newD = {}
-    for k in d.keys():
-        if k != "Job Class":
-            newD[k] = d[k]
-    return newD
 
-fileDictionary = ridHead(fileDictionary)
 randJob = weightedRandom(fileDictionary)
 
-@my_app.route('/occupations')
-def main():
-    return render_template('occupations.html', listkeys = fileDictionary.keys(), d = fileDictionary, randomJob = randJob)
-
-if __name__ == '__main__':
-    my_app.debug = True
-    my_app.run()
+def createDict():
+    return fileDictionary
