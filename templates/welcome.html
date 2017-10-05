@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <title>Cool Interactive Title</title>
+        </head>
+
+        <body>
+                {% block content1 %}
+                <form action = "/logOut" method = "POST">
+                        <input type = "submit" value = "logOut">
+                </form>
+                {% endblock %}
+
+                {% block content2 %}
+                <h1>Welcome {{usrName}} to this cool page!</h1> 
+                <br>
+                Name: {{usrName}} <br>
+                Request Method: {{reqMethod}} <br>
+                {% endblock %}
+                
+        </body>
+</html>
